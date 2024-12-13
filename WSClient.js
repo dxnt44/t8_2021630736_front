@@ -1,7 +1,7 @@
 class WSClient {
     constructor(baseURL) {
         this.baseURL = baseURL;
-        this.apiKey = "YM-gz1dfblamMKf2rcx7Hpn638kEikuo73UPRPuwHTBMAzFufn9DSg=="; // Reemplaza con la clave copiada desde Azure
+        this.apiKey = "XQzBQ-WJSmsbIDvOCLAv5vwFWZbDAWVErf_o6CHzdfVLAzFucXNS-Q=="; // Reemplaza con la clave copiada desde Azure
     }
 
     async postJson(endpoint, body) {
