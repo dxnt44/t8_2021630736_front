@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 Descripcion: descripcion,
                 Precio: precio,
                 Cantidad: cantidad,
-                Fotografia: reader.result.split(",")[1],
+                Fotografia: reader.result.split(",")[1], // Convertir imagen a base64
             };
 
             try {
