@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log("DOM completamente cargado y analizado");
 
     // Instancia del cliente WS
-    const cliente = new WSClient("http://localhost:7071/api"); // Cambia a la URL real de tu backend en producción
+    const cliente = new WSClient("https://t8-2021630736-a.azurewebsites.net/api"); // Cambia a la URL real de tu backend en producción
 
     // Elementos de la interfaz
     const btnCaptura = document.getElementById("btnCaptura");
