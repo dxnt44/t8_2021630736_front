@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplicación de Compra</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="WSClient.js"></script>
+    <script src="script.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Aplicación de Compra</h1>
+        <nav>
+            <button id="btnCaptura">Captura de Artículo</button>
+            <button id="btnCompra">Compra de Artículos</button>
+            <button id="btnCarrito">Carrito de Compra</button>
+        </nav>
+    </header>
+    <main>
+        <!-- Sección de Captura de Artículo -->
+        <section id="capturaArticulo" class="oculto">
+            <h2>Captura de Artículo</h2>
+            <form id="formCaptura">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" required>
+                <label for="descripcion">Descripción:</label>
+                <textarea id="descripcion" required></textarea>
+                <label for="precio">Precio:</label>
+                <input type="number" id="precio" required min="0" step="0.01">
+                <label for="cantidad">Cantidad:</label>
+                <input type="number" id="cantidad" required min="1">
+                <label for="fotografia">Fotografía:</label>
+                <input type="file" id="fotografia" accept="image/*" required>
+                <button type="submit">Guardar Artículo</button>
+            </form>
+        </section>
+
+        <!-- Sección de Compra de Artículos -->
+        <section id="compraArticulo" class="oculto">
+            <h2>Compra de Artículos</h2>
+            <form id="formBusqueda">
+                <label for="busqueda">Buscar:</label>
+                <input type="text" id="busqueda" placeholder="Palabra clave" required>
+                <button type="submit">Buscar</button>
+            </form>
+            <div id="resultados"></div>
+        </section>
+
+        <!-- Sección del Carrito de Compra -->
+        <section id="carritoCompra" class="oculto">
+            <h2>Artículos en el Carrito</h2>
+            <div id="listaCarrito"></div>
+            <p id="totalCarrito">Total: $0.00</p>
+            <button id="btnVaciarCarrito">Vaciar Carrito</button>
+            <button id="btnRegresarCompra">Seguir Comprando</button>
+        </section>
+    </main>
+</body>
+</html>
