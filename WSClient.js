@@ -22,7 +22,7 @@ class WSClient {
     }
 
     async getJson(endpoint) {
-        const response = await fetch(`${this.baseURL}/${endpoint}?code=${this.apiKey}`, {
+        const response = await fetch(`${this.baseURL}/${endpoint}&code=${this.apiKey}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
