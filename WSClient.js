@@ -5,7 +5,11 @@ class WSClient {
     }
 
     async postJson(endpoint, body) {
-        const response = await fetch(`${this.baseURL}/${endpoint}?code=${this.apiKey}`, {
+        // Determina si usar '?' o '&' para agregar el parámetro 'code'
+        const separator = endpoint.includes("?") ? "&" : "?";
+        const url = `${this.baseURL}/${endpoint}${separator}code=${this.apiKey}`;
+
+        const response = await fetch(url, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -22,7 +26,11 @@ class WSClient {
     }
 
     async getJson(endpoint) {
-        const response = await fetch(`${this.baseURL}/${endpoint}&code=${this.apiKey}`, {
+        // Determina si usar '?' o '&' para agregar el parámetro 'code'
+        const separator = endpoint.includes("?") ? "&" : "?";
+        const url = `${this.baseURL}/${endpoint}${separator}code=${this.apiKey}`;
+
+        const response = await fetch(url, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -37,4 +45,3 @@ class WSClient {
         return response.json();
     }
 }
-
