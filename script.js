@@ -112,30 +112,35 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Cargar carrito
     async function cargarCarrito() {
-        try {
-            const respuesta = await cliente.getJson("obtener_carrito");
-            const { carrito, total } = respuesta;
+    try {
+        const respuesta = await cliente.getJson("obtener_carrito");
+        const carrito = respuesta.carrito;
 
-            listaCarrito.innerHTML = "";
-            carrito.forEach((item) => {
-                const div = document.createElement("div");
-                div.innerHTML = `
-                    <img src="data:image/png;base64,${item.Fotografia}" alt="Foto" width="50">
-                    <p>Nombre: ${item.Nombre}</p>
-                    <p>Cantidad: ${item.Cantidad}</p>
-                    <p>Precio por unidad: $${item.Precio}</p>
-                    <p>Total por este artículo: $${item.Total}</p>
-                    <button onclick="eliminarArticuloCarrito(${item.IdArticulo})">Eliminar</button>
-                `;
-                listaCarrito.appendChild(div);
-            });
+        listaCarrito.innerHTML = "";
+        let totalGeneral = 0;
+        carrito.forEach((item) => {
+            const totalPorArticulo = item.Cantidad * item.Precio;
+            totalGeneral += totalPorArticulo;
 
-            totalCarrito.textContent = `Total: $${total}`;
-        } catch (error) {
-            console.error("Error al cargar el carrito:", error);
-            alert("Error al cargar el carrito.");
-        }
+            const div = document.createElement("div");
+            div.innerHTML = `
+                <img src="data:image/png;base64,${item.Fotografia}" alt="Foto" width="50">
+                <p>Nombre: ${item.Nombre}</p>
+                <p>Cantidad: ${item.Cantidad}</p>
+                <p>Precio por unidad: $${item.Precio}</p>
+                <p>Total por este artículo: $${totalPorArticulo}</p>
+                <button onclick="eliminarArticuloCarrito(${item.IdArticulo})">Eliminar</button>
+            `;
+            listaCarrito.appendChild(div);
+        });
+
+        totalCarrito.textContent = `Total: $${totalGeneral}`;
+    } catch (error) {
+        console.error("Error al cargar el carrito:", error);
+        alert("Error al cargar el carrito.");
     }
+}
+
 
     // Eliminar artículo del carrito
     window.eliminarArticuloCarrito = async (idArticulo) => {
